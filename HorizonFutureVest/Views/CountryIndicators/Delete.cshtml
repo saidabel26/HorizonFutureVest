@@ -1,0 +1,12 @@
+﻿@model Application.ViewModels.CountryIndicatorViewModel
+@{
+    Layout = "_Layout";
+}
+<h2>Eliminar Indicador por País</h2>
+<p>¿Está seguro que desea eliminar el indicador de <strong>@Model.Year</strong> para el país <strong>@Model.CountryName</strong> y macroindicador <strong>@Model.MacroIndicatorName</strong>?</p>
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="/CountryIndicators" class="btn btn-secondary text-white">Cancelar</a>
+</form>

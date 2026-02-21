@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Application.ViewModels.CountryViewModel>
+@{
+    Layout = "_Layout";
+}
+<h2>Países</h2>
+<a class="btn btn-primary mb-2" href="/Countries/Create">Crear País</a>
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No hay países registrados.</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Código ISO</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var country in Model)
+            {
+                <tr>
+                    <td>@country.Name</td>
+                    <td>@country.IsoCode</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning text-white" href="/Countries/Edit/@country.Id">Editar</a>
+                        <a class="btn btn-sm btn-danger text-white" href="/Countries/Delete/@country.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

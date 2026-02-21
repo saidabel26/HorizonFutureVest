@@ -1,0 +1,35 @@
+﻿@model Application.ViewModels.CountryIndicatorViewModel
+@{
+    Layout = "_Layout";
+}
+<h2>Crear Indicador por País</h2>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    <div class="mb-3">
+        <label>País</label>
+        <select asp-for="CountryId" asp-items="ViewBag.CountryOptions" class="form-control"></select>
+        <span asp-validation-for="CountryId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label>Macroindicador</label>
+        <select asp-for="MacroIndicatorId" asp-items="ViewBag.MacroIndicatorOptions" class="form-control"></select>
+        <span asp-validation-for="MacroIndicatorId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label>Valor</label>
+        <input asp-for="Value" class="form-control" type="number" step="any" />
+        <span asp-validation-for="Value" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label>Año</label>
+        <input asp-for="Year" class="form-control" type="number" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Crear</button>
+    <a href="/CountryIndicators" class="btn btn-secondary text-white">Volver</a>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

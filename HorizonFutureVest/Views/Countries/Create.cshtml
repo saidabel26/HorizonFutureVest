@@ -1,0 +1,25 @@
+﻿@model Application.ViewModels.CountryViewModel
+@{
+    Layout = "_Layout";
+}
+<h2>Crear País</h2>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    <div class="mb-3">
+        <label>Nombre</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label>Código ISO</label>
+        <input asp-for="IsoCode" class="form-control" />
+        <span asp-validation-for="IsoCode" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Crear</button>
+    <a href="/Countries" class="btn btn-secondary text-white">Volver</a>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

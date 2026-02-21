@@ -1,0 +1,17 @@
+﻿@model Application.ViewModels.MacroIndicatorViewModel
+@{
+    Layout = "_Layout";
+}
+<h2>Eliminar Macroindicador</h2>
+<p>¿Está seguro que desea eliminar el macroindicador <strong>@Model.Name</strong>?</p>
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="/MacroIndicators" class="btn btn-secondary text-white">Cancelar</a>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

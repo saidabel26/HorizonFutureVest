@@ -1,0 +1,21 @@
+﻿@model Application.ViewModels.CountryViewModel
+@{
+    Layout = "_Layout";
+}
+<h2>Editar País</h2>
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    <div class="mb-3">
+        <label>Nombre</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label>Código ISO</label>
+        <input asp-for="IsoCode" class="form-control" />
+        <span asp-validation-for="IsoCode" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="/Countries" class="btn btn-secondary text-white">Volver</a>
+</form>

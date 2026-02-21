@@ -1,0 +1,11 @@
+﻿@model Application.ViewModels.CountryViewModel
+@{
+    Layout = "_Layout";
+}
+<h2>Eliminar País</h2>
+<p>¿Está seguro que desea eliminar el país <strong>@Model.Name</strong>?</p>
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="/Countries" class="btn btn-secondary text-white">Cancelar</a>
+</form>

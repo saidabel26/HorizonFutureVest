@@ -1,0 +1,56 @@
+﻿@model Application.ViewModels.HomeIndexViewModel
+@{
+    Layout = "_Layout";
+}
+<h2>Ranking de Países</h2>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label>Año</label>
+        <select asp-for="SelectedYear" asp-items="ViewBag.YearOptions" class="form-control"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Obtener Ranking</button>
+</form>
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-warning mt-3">
+        @Model.Message
+        @if (!string.IsNullOrEmpty(Model.LinkText) && !string.IsNullOrEmpty(Model.LinkUrl))
+        {
+            <a href="@Model.LinkUrl" class="btn btn-link">@Model.LinkText</a>
+        }
+    </div>
+}
+@if (Model.RankingResults != null && Model.RankingResults.Any())
+{
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>País</th>
+                <th>Código ISO</th>
+                <th>Scoring</th>
+                <th>Tasa de Retorno Estimada</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in Model.RankingResults)
+            {
+                <tr>
+                    <td>@result.CountryName</td>
+                    <td>@result.IsoCode</td>
+                    <td>@result.Scoring</td>
+                    <td>@result.EstimatedReturnRate %</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Model.RankingResults != null)
+{
+    <div class="alert alert-info mt-4">No hay países elegibles para el ranking en el año seleccionado.</div>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

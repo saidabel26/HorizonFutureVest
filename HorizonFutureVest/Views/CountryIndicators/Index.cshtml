@@ -1,0 +1,52 @@
+﻿@model Application.ViewModels.CountryIndicatorsIndexViewModel
+@{
+    Layout = "_Layout";
+}
+<h2>Indicadores por País</h2>
+<form method="get" class="row mb-3">
+    <div class="col-md-4">
+        <label>País</label>
+        <select asp-for="SelectedCountryId" asp-items="ViewBag.CountryOptions" class="form-control"></select>
+    </div>
+    <div class="col-md-4">
+        <label>Año</label>
+        <select asp-for="YearFilter" asp-items="ViewBag.YearOptions" class="form-control"></select>
+    </div>
+    <div class="col-md-4 align-self-end">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </div>
+</form>
+<a class="btn btn-primary mb-2" href="/CountryIndicators/Create">Crear Indicador</a>
+@if (!Model.Indicators.Any())
+{
+    <div class="alert alert-info">No hay indicadores registrados.</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>País</th>
+                <th>Macroindicador</th>
+                <th>Valor</th>
+                <th>Año</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var indicator in Model.Indicators)
+            {
+                <tr>
+                    <td>@indicator.CountryName</td>
+                    <td>@indicator.MacroIndicatorName</td>
+                    <td>@indicator.Value</td>
+                    <td>@indicator.Year</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning text-white" href="/CountryIndicators/Edit/@indicator.Id">Editar</a>
+                        <a class="btn btn-sm btn-danger text-white" href="/CountryIndicators/Delete/@indicator.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

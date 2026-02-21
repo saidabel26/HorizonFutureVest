@@ -40,15 +40,3 @@ Desde la carpeta del proyecto web o del proyecto `Persistence` (según tu flujo),
 - Actualizar la base de datos: `dotnet ef database update --project Persistence --startup-project HorizonFutureVest`
 
 (Ajusta `--project` y `--startup-project` según tu estructura y tu herramienta favorita.)
-
-### Ejecutar la aplicación
-1. Abrir la solución `HorizonFutureVest.sln` en Visual Studio o abrir la carpeta con VS Code.
-2. Verificar que `HorizonFutureVest` sea el proyecto de inicio.
-3. Ejecutar (F5 o `dotnet run` desde la carpeta del proyecto web).
-
-### Pruebas manuales y validaciones recomendadas
-Revisa las validaciones principales descritas en el mandato: creación/edición/eliminación de países, macroindicadores, indicadores por país, configuración de tasas y simulador de ranking. Asegúrate de que los mensajes de validación se muestren en la UI.
-
----
-
-Si necesitas, puedo agregar instrucciones para ejecutar migraciones paso a paso o un script de seed para datos de prueba.
